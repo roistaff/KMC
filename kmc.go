@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/gvalkov/golang-evdev"
-	"os"
 	"strings"
 )
 
