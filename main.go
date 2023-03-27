@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 	"github.com/gvalkov/golang-evdev"
+	"os"
 )
 
 func main() {
@@ -19,8 +20,10 @@ func main() {
 			break
 		}
 	}
-	if keyboard == nil { 
-		panic("Keyboard not found")
+	if keyboard == nil {
+		errormessage := "  \033[31m"+"×"+"\033[0m"+" Keyboard not found."
+		fmt.Printf(errormessage)
+		os.Exit(1)
 	}
 	count := 0
 	for {
@@ -31,7 +34,7 @@ func main() {
 		for _, event := range events {
 			if event.Type == evdev.EV_KEY {
 				counter := "\033[33m" + fmt.Sprint(count) + "\033[0m"
-				fmt.Printf("\033[2K\rYou made %s mistakes!", counter)
+				fmt.Printf("\033[2K\r   You made %s mistakes!", counter)
 				if event.Value == 1 {
 					if event.Code == 14{
 					count++
