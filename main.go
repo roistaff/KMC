@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	fmt.Println("\033[1m","Keyboard Mistake Counter is running...","\033[0m")
 	devices, err := evdev.ListInputDevices()
 	if err != nil {
 		panic(err)
@@ -21,7 +22,6 @@ func main() {
 	if keyboard == nil { 
 		panic("Keyboard not found")
 	}
-
 	count := 0
 	for {
 		events, err := keyboard.Read()
@@ -30,7 +30,8 @@ func main() {
 		}
 		for _, event := range events {
 			if event.Type == evdev.EV_KEY {
-				fmt.Printf("\033[2k\rYou made %d mistakes!",count)
+				counter := "\033[33m" + fmt.Sprint(count) + "\033[0m"
+				fmt.Printf("\033[2K\rYou made %s mistakes!", counter)
 				if event.Value == 1 {
 					if event.Code == 14{
 					count++
