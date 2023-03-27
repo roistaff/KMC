@@ -51,14 +51,14 @@ func main() {
 				fmt.Printf("\033[2K\r   You made %s mistakes!", counter)
 				if event.Value == 1 {
 					if event.Code == 14{
-					time.Sleep(time.Millisecond * 600)
 					count++
 				}
 				} else if event.Value == 2 {
 					if event.Code == 14{
+					time.Sleep(time.Microsecond * 200)
 					count++
 				}
-				}
+			}
 			}
 		}
 	}
