@@ -1,2 +1,4 @@
 # KMC
-KMC Keyboard Mistake Counter
+KMC is Keyboard Mistake Counter.
+It counts your key mistake.
+
