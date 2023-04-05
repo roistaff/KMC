@@ -36,7 +36,7 @@ func main() {
 	}
 	if keyboard == nil {
 		errormessage := "  \033[31m"+"×"+"\033[0m"+" Keyboard not found."
-		fmt.Printf(errormessage)
+		fmt.Println(errormessage)
 		os.Exit(1)
 	}
 	count := 0
